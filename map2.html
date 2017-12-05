@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sspace</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+         <!--Google Maps API-->
+    </head>
+
+
+    <body>
+        <!-- Start of first page -->
+       
+		
+        <!-- Start of first page -->
+        <div data-role="page" id="map" data-theme="a">
+            <div data-role="header" data-position="fixed">
+                <a data-icon="back" data-rel="back" back-btn="true">Back</a> 
+                <h1>Map</h1>
+                <a href="#infopopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Map Help</a>
+                <div data-role="popup" id="infopopup"><p>The star shows your current location. Click on the location tags to get the name of a location and it's safety rating. Double click on the location tag to go to it's profile page.</p>
+            </div> 
+            </div>
+
+            <p>Welcome!</p>
+            <br>
+            <p>Find some safe spaces near you.</p>
+            <a href="map.html">See location 77 Mass Ave</a>
+            <div role="main" class="ui-content">
+                <div id="basic_map" style="margin-top:20px; height:240px;"></div>
+
+                    <div data-role="footer" data-position="fixed" data-theme="b">
+                    <div data-role="navbar" data-theme="b">
+                    
+                    <ul>
+                        <li> <a href="map.html" class="ui-btn-active" data-icon="location">Map</a>
+                        <li> <a href="profile.html" data-icon="user">You</a>
+                        <li> <a href="Search.html" data-icon="search">Search</a>
+                        <li> <a href="Info.html" data-icon="info">Info</a>
+                    </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+                
+                 <!--Google Maps API-->
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        
+        <!-- the following script handles Google Maps -->
+        <script>
+                //global variables for storing location information
+            var updateLocation;
+            var lat;
+            var lon;
+            
+        /*This function uses the geolocation.getCurrentPosition method.
+        The geolocation.getCurrentPosition takes 3 parameters: a success function, an error function, and options in the form of JSON syntax. 
+        This function is invoked when the user click on the get_coords button. 
+        */
+        
+        function getGPS()
+        {
+            //The enableAccuracy option provides you with the highest accuracy but consumes a lot of battery life.
+            navigator.geolocation.getCurrentPosition(successGPS,errorGPS,{enableHighAccuracy : true});
+        }
+        
+        /* This function is invoked by the geolocation.getCurrentPosition method used in getGPS()
+        */
+        /*This function is used to retrieve GPS coordinates and pass them to a function, which in turn initializes a Google Map centered on the current location of the device.*/
+        function getGPSLatLng()
+        
+        {
+            navigator.geolocation.getCurrentPosition(successGPSLatLng,errorGPS,{enableHighAccuracy : true});
+        }
+        
+        /* This function is invoked when there is an error in reading GPS info*/
+        function errorGPS()
+        {
+            alert("GPS Error");
+        }
+        
+        /*This function initializes a Google Map object centered on the current location of the device */
+        
+        function successGPSLatLng(position)
+        {
+            //store current latitude and longitude information
+            lat=position.coords.latitude;
+            lon=position.coords.longitude;
+            
+            //create a new googl.maps.LatLng object
+            var latlng=new google.maps.LatLng(lat,lon);
+            
+            //set Google Map options
+            var myOptions={
+                zoom: 15,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            
+            //create a new map, pass its <div> contsainer as parameter
+            var map= new google.maps.Map(document.getElementById("basic_map"), myOptions);
+            
+            //place a marker with current latitude and longitude on the map
+            var yourPos= new google.maps.Marker({position: latlng, 
+                                                icon: 'star.png',map: map});
+            var infoyourPos = new google.maps.InfoWindow({
+            content:"You are here!"
+            });
+            google.maps.event.addListener(yourPos, 'click', function() {
+            infoyourPos.open(map, yourPos);
+            });
+        }
+        </script>
+        
+        <!-- The following <script> handles jQuery Mobile events -->
+        <script>
+        
+        
+        <!-- Event listener for the pageinit (i.e.uloaded) event of #map -->
+            $("#map").bind("pageinit",function (event)
+            {
+                getGPSLatLng();
+            });
+            </script>
+    </body>
+</html>

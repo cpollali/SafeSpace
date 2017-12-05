@@ -1,0 +1,174 @@
+<html>
+
+
+<!-- Latest compiled and minified CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Optional theme -->
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+			<title>Sspace</title>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Sspace</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="phase1.html">Phase #1</a></li>
+        <li><a href="phase2.html">Phase #2</a></li>
+        <li><a href="phase3.html">Phase #3</a></li>
+        <li class="active"><a href="phase4.html">Phase #4<span class="sr-only">(current)</span></a></li>
+        <li><a href="phase5.html">Phase #5</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<head>
+
+	 <!--<img id="pic" src="pic.jpg" width="500" />-->
+
+	<h1>Sspace</h1> 
+Created by Christina Pollais '16, Sasha Levy '15, and Steffi Lee '15<br></head>
+
+
+<body> 
+<h4> <b>
+Computer Prototype<br></h4> </b>
+<p> We decided to implement the first design, which can be seen in the screen captures below. 
+  <br><br>
+We implemented the <b>eight golden rules</b>: 
+<ul>
+<li><b>Consistency</b>: The whole application has the three same basic colors: white, gray, and light blue and the same format on each page (header, navigation, etc).</li>
+<li><b>Universal Usability</b>: The application caters to all users by having a simple interface and intuitive icons throughout.</li>
+<li><b>Informative Feedback</b> + <b>Yield Closure</b>: All actions, such as posting a comment or deleting a past comment, have feedback and diologs that show their completion.</li>
+<li><b>Prevent Errors</b>: By offering informative feedback to actions such as posting a comment, the application prevents easily made errors.</li>
+<li><b>Support internal locus of control</b>: The application is consistent and there are not surprises.</li>
+<li><b>Reduce short-term memory load</b>: The uesr only needs to sign in once, thus reducing their memory load.</li>
+</ul>
+
+We implemented the <b>color</b> principles we learned in class: 
+<ul>
+  <li><p>We chose to use only one color, light blue, since it complements the white and gray well and it is also calming to the user (in contrast to a red color). </p></li>
+</ul>
+
+We implemented the <b>icon</b> principles we learned in class: 
+<ul>
+  <li><p>We chose to use only simple icons that are intuitive to the user and simple to navigate. </p></li>
+</ul>
+
+<h4> <b>
+Features<br></h4> </b>
+
+<ul>
+  <li><b>High fidelity in look</b>: All of the application's main pages have been created. </li>
+  <li><b>Medium fidelity in breadth</b>: All of the application's main features have been created.</li>
+  <li><b>Mixed fidelity in depth</b>: All of the application's features can be implemented, except for "upvoting" a comment, which has been put in place but when pressed doesn't respond accordingly. This will be fixed shortly in the next phase as it was not required due to the "mixed fidelity".<br><br><u>Tasks that are available</u>: posting a comment, searching for a location, clicking on a location from the map, and deleting a comment. <br> The tasks of searching for a location, clicking on a location from the map, and viewing a location's profile are fully implemented (Tasks 1, 2, and 5 from phase 3) while the other two are missing the back-end.</li>
+</ul>
+
+
+<h4> <b>
+Screen Captures<br></h4> </b>
+
+<b>Home-screen:</b> <br>
+This is the screen that users are greeted with when they have not logged in yet. Once they log in, they will never see this page again. <br>
+
+<img id="pic" src="images/home.jpg" height= "300" width="180" />
+<br>
+<br>
+
+<b>Map:</b> <br>
+This is the "map" screen. Users can see their current location (the star) and the locations around them. By pressing on one of the locations once, a pop up will appear that ill show more details about it (photo #3) and by pressing on one of the locations twice, the user will get redirected to the location's profile (photo #4). <br>
+
+<img id="pic" src="images/map1.png" height= "300" width="180" />
+<img id="pic" src="images/map2.png" height= "300" width="180" />
+<img id="pic" src="images/map3.png" height= "300" width="180" />
+<img id="pic" src="images/map4.png" height= "300" width="180" />
+<br>
+<br>
+
+<b>Profile:</b> <br>
+This is a user's profile. They can access it through the navigation bar on the bottom of each page. It has your comments (ordered either by recent or top depending on which you choose) and a user can delete them by pressing on the "x" icon on the side of each comment. When a user takes that course of action, they are greeted by a pop up that will ask them if they are sure in order to reduce mistakes (photo #3). <br>
+
+<img id="pic" src="images/profile1.png" height= "300" width="180" />
+<img id="pic" src="images/profile2.png" height= "300" width="180" />
+<img id="pic" src="images/profile3.png" height= "300" width="180" />
+<br>
+<br>
+
+<b>Search:</b> <br>
+This is where a user can search for a location. They can also access this page through the navigation bar on the bottom of each page. They are able to see all the location pages available on the bottom (which are also buttons so if the user clicks one, they will be redirected to the particular location's page). Once a user starts typing in the search bar, only the correct location will appear below (photo #2). <br>
+
+<img id="pic" src="images/search1.png" height= "300" width="180" />
+<img id="pic" src="images/search2.png" height= "300" width="180" />
+<br>
+<br>
+
+
+<b>Location page: Kappa Sigma </b><br>
+This is an example of what all location pages will look like. It is very similar to a user's profile page as to increase consistency and internal locus of control. Here, a user can look at the reviews a location has (either by recent or top) and can either like comments by clicking on the hearts next to each comment (not implemented yet at this phase) or post a comment (redirected to the pages in the next section). <br>
+
+
+<img id="pic" src="images/ks1.png" height= "300" width="180" />
+<img id="pic" src="images/ks2.png" height= "300" width="180" />
+<br>
+<br>
+
+<b>Comment:</b> <br>
+This is where a user can write and post a comment. They can access this page only by first accessing a particular location and then pressing on the "Add a Comment" button (seen above, photo #2). They can write a comment and then press "Post". Then, they are prompted by a pop-up that asks them if they are sure in order to limit mistakes. After they re-affirm that they want to submit their comment, they are redirected to a page that confirms that their comments has been posted and a button that allows them to go and see it on the location's page.<br>
+
+<img id="pic" src="images/comment1.png" height= "300" width="180" />
+<img id="pic" src="images/comment2.png" height= "300" width="180" />
+<img id="pic" src="images/comment3.png" height= "300" width="180" />
+<br>
+<br>
+
+
+
+
+
+ 
+
+ </body>
+			
+
+
+
+
+	</html>

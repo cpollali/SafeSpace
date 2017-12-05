@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sspace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-webapp-status-bar-style" content="black">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+  <script>
+  var myCenter=new google.maps.LatLng(42.359254,-71.093667);
+  var kappasig = new google.maps.LatLng(42.356077,-71.097269);
+  var phidelts = new google.maps.LatLng(42.3503339,-71.097379);
+  var zetapsi = new google.maps.LatLng(42.361762,-71.097021);
+
+
+  function initialize()
+  {
+  //set up map
+  var mapProp = {
+    center:myCenter,
+    zoom:14,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+//set up kappa sig
+var KSmarker=new google.maps.Marker({
+  position:kappasig,
+});
+KSmarker.setMap(map);
+
+var KSinfo = new google.maps.InfoWindow({
+  content:"Kappa Sigma, MIT. Rating: 2/5"
+});
+
+//set up star
+var yourPos = new google.maps.Marker({
+  position: myCenter,
+  icon: 'star.png'
+});
+yourPos.setMap(map);
+
+var infoyourPos = new google.maps.InfoWindow({
+  content:"You are here!"
+});
+
+//set up phi delts
+var PDmarker = new google.maps.Marker({
+  position:phidelts,
+});
+PDmarker.setMap(map);
+
+var PDinfo = new google.maps.InfoWindow({
+  content: "Phi Delta Theta, MIT. Rating: 4/5"
+});
+
+//set up zeta psi
+var ZPmarker = new google.maps.Marker({
+  position:zetapsi,
+})
+ZPmarker.setMap(map);
+
+var ZPinfo = new google.maps.InfoWindow({
+  content: "Zeta Psi, MIT. Rating: 4/5"
+});
+
+function isInfoWindowOpen(infoWindow) {
+  var map = infoWindow.getMap();
+  return (map !== null && typeof map !== "undefined");
+}
+
+
+google.maps.event.addListener(yourPos, 'click', function() {
+  infoyourPos.open(map, yourPos);
+});
+
+
+google.maps.event.addListener(KSmarker, 'click', function() {
+  KSinfo.open(map,KSmarker);
+});
+
+google.maps.event.addListener(KSmarker, 'dblclick', function() {
+  window.location="KS.html";
+});
+
+google.maps.event.addListener(PDmarker, 'click', function() {
+  PDinfo.open(map, PDmarker);
+});
+google.maps.event.addListener(PDmarker, 'dblclick', function() {
+  window.location="PD.html";
+});
+google.maps.event.addListener(ZPmarker, 'click', function() {
+  ZPinfo.open(map, ZPmarker);
+});
+google.maps.event.addListener(ZPmarker, 'dblclick', function() {
+  window.location="ZP.html";
+});
+setTimeout(function() { KSinfo.close(); }, 5000);
+setTimeout(function() { infoyourPos.close(); }, 5000);
+setTimeout(function() { PDinfo.close(); }, 5000);
+setTimeout(function() { ZPinfo.close(); }, 5000);
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+
+<body>
+  <!-- Start of first page -->
+  <div data-role="page" id="welcome" data-theme="a">
+    <div data-role="header" data-position="fixed">
+      <a data-icon="back" data-rel="back" back-btn="true">Back</a> 
+      <h1>Map</h1>
+      <a href="#infopopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Map Help</a>
+      <div data-role="popup" id="infopopup"><p>The star shows your current location. Click on the location tags to get the name of a location and it's safety rating. Double click on the location tag to go to it's profile page.</p>
+      </div> 
+    </div>
+
+    <p>Welcome!</p>
+    <br>
+    <p>Find some popular Sspaces off campus.</p>
+    <a href="map2.html">See current location</a>
+
+    <div id="googleMap" style="margin-top:20px; height:240px;"></div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar" data-theme="b">
+        <ul>
+          <li> <a href="map.html" class="ui-btn-active" data-icon="location">Map</a>
+          <li> <a href="profile.html" data-icon="user">You</a>
+          <li> <a href="Search.html" data-icon="search">Search</a>
+          <li> <a href="Info.html" data-icon="info">Info</a>
+        </ul>
+      </div>
+    </div>
+            <!--Google Maps API-->
+<!--
+        //     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+
+
+        //         function makeDark()
+
+        //         {
+        //          <ul id="list" class="ui-btn ui-btn-b" data-role="listview" data-icon="false" data-split-icon="heart"  data-split-theme="d" >
+        //      }
+
+        // /*This function uses the geolocation.getCurrentPosition method.
+        // The geolocation.getCurrentPosition takes 3 parameters: a success function, an error function, and options in the form of JSON syntax. 
+        // This function is invoked when the user click on the get_coords button. 
+        // */
+        
+        // function getGPS()
+        // {
+        //     //The enableAccuracy option provides you with the highest accuracy but consumes a lot of battery life.
+        //     navigator.geolocation.getCurrentPosition(successGPS,errorGPS,{enableHighAccuracy : true});
+        // }
+        
+        // /* This function is invoked by the geolocation.getCurrentPosition method used in getGPS()
+        // */
+        // /*This function is used to retrieve GPS coordinates and pass them to a function, which in turn initializes a Google Map centered on the current location of the device.*/
+        // function getGPSLatLng()
+        
+        // {
+        //     navigator.geolocation.getCurrentPosition(successGPSLatLng,errorGPS,{enableHighAccuracy : true});
+        // }
+        
+        // /* This function is invoked when there is an error in reading GPS info*/
+        // function errorGPS()
+        // {
+        //     alert("GPS Error");
+        // }
+        
+        // /*This function initializes a Google Map object centered on the current location of the device */
+        
+        // function successGPSLatLng(position)
+        // {
+        //     //store current latitude and longitude information
+        //     lat=position.coords.latitude;
+        //     lon=position.coords.longitude;
+            
+        //     //create a new googl.maps.LatLng object
+        //     var latlng=new google.maps.LatLng(lat,lon);
+            
+        //     //set Google Map options
+        //     var myOptions={
+        //         zoom: 15,
+        //         center: latlng,
+        //         mapTypeId: google.maps.MapTypeId.ROADMAP
+        //     }
+            
+        //     //create a new map, pass its <div> contsainer as parameter
+        //     var map= new google.maps.Map(document.getElementById("basic_map"), myOptions);
+            
+        //     //place a marker with current latitude and longitude on the map
+        //     var marker= new google.maps.Marker({position: latlng, map: map});
+            
+        // }
+        // </script>
+        
+        // <!-- The following <script> handles jQuery Mobile events 
+        // <script>
+        
+        
+        // <!-- Event listener for the pageinit (i.e.uloaded) event of #map 
+        // $("#map").bind("pageinit",function (event)
+        // {
+        //     getGPSLatLng();
+        //}); -->
+      </body>
+      </html>
